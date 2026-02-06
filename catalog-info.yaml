@@ -1,0 +1,28 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+	name: hello-world
+	title: Hello World Template
+	description: A minimal template that outputs "Hello, World!".
+spec:
+	owner: user/guest
+	type: service
+	parameters:
+		- title: Template Options
+			required:
+				- name
+			properties:
+				name:
+					title: Name
+					type: string
+					description: Your name, or any good name.
+	steps:
+		- id: write-hello
+			name: Write Hello World
+			action: debug:log
+      input:
+        message: Hello, World! And ${{parameters.name}} too!
+	output:
+		links:
+			- title: Repository
+				url: https://example.com/hello-world
